@@ -6,7 +6,8 @@
   "scripts": {
     "te": "jest __test__/server.test.js",
     "test": "NODE_ENV=test jest --silent",
-    "server-start": "nodemon server/app.js"
+    "server-start": "nodemon server/app.js",
+    "start": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
