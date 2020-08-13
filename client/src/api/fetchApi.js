@@ -1,7 +1,8 @@
 import axios from "axios";
-
+// const aa ="http://ec2-54-180-105-165.ap-northeast-2.compute.amazonaws.com:3040";
+// axios.defaults.withCredentials = true
 // const baseUrl = 'http://localhost:3040';
-const baseUrl = "http://54.180.105.165:3040/building/info";
+const baseUrl = "http://54.180.105.165:3040";
 const instance = axios.create({
   timeout: 1000,
 });
@@ -9,24 +10,26 @@ const instance = axios.create({
 export function fetchBuildingInfo() {
   return axios.get("http://54.180.105.165:3040/building/info");
 }
-//4주차 작업들 아래는
-export function fetchSignIn(email, password) {
-  const userInfo = {
-    email,
-    password,
-  };
-  return axios.post(baseUrl + "/users/signIn", userInfo);
+//login
+export function fetchSignIn(userInfo) {
+  // const userInfo = {
+  //   email,
+  //   password,
+  // };
+  return axios.post(baseUrl + "/user/signin", userInfo);
+}
+export function fetchSignUp(userInfo) {
+  return axios.post(baseUrl + "/user/signup", userInfo);
+}
+//googleLogin
+export function googleSignin(userInfo) {
+  return axios.post(baseUrl + "/user/googleSignin", userInfo);
+}
+export function googleSignup(userInfo) {
+  return axios.post(baseUrl + "/user/googleSignin", userInfo);
 }
 
-export function fetchSignUp(email, id, password) {
-  const userInfo = {
-    email,
-    username: id,
-    password,
-  };
-  return axios.post(baseUrl + "/users/signUp", userInfo);
-}
-
+//4weeks
 export function fetchUserInfoGet() {
   return axios.get(baseUrl + "/users/info");
 }

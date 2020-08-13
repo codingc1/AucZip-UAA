@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
 import TextField from "@material-ui/core/TextField";
 import GoogleSignin from "./googleSignin.js";
-import axios from "axios";
+import { fetchSignIn } from "../../../api/fetchApi";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -88,18 +88,13 @@ function Signin(props) {
     setOpen(false);
   };
 
-  const handleSubmit = ({ handleIsLogin }) => {
-    const apiUrl = "http://54.180.105.165:3040";
-    // const aa ="http://ec2-54-180-105-165.ap-northeast-2.compute.amazonaws.com:3040/user/signin";
-    // axios.defaults.withCredentials = true
-    axios.post(apiUrl + "/user/signin", userInfo).then((data) => {
-      // console.log(aa, 'url')
-      // axios.post(aa, userInfo).then((data) => {  
-        
+  const handleSubmit = ({ handleLogin }) => {
+    fetchSignIn(userInfo).then((data) => {
+      // axios.post(apiUrl + "/user/signin", userInfo).then((data) => {
       console.log(data, "data");
       if (data.status === 200) {
         alert("로그인에 성공하셨습니다");
-        handleIsLogin();
+        handleLogin(true);
 
         if (data.data.memberId === "admin") {
           handleClose();

@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Menu = ({ isLogin, handleIsLogin }) => {
+const Menu = ({ isLogin, handleLogin }) => {
   const classes = useStyles();
 
   return (
@@ -77,18 +77,18 @@ const Menu = ({ isLogin, handleIsLogin }) => {
               </Link>
             </Button>
           ) : (
-            <Signup handleIsLogin={handleIsLogin} />
+            <Signup handleLogin={handleLogin} />
           )}
           {isLogin ? (
             <Button
               className={classes.button}
               color="inherit"
-              onClick={handleIsLogin}
+              onClick={() => handleLogin(false)}
             >
               로그아웃
             </Button>
           ) : (
-            <Signin handleIsLogin={handleIsLogin} />
+            <Signin handleLogin={handleLogin} />
           )}
 
           {/* <Signup isLogin={handleIsLogin} />

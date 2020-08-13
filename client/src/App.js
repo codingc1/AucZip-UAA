@@ -32,7 +32,9 @@ const App = () => {
   const handleIsLogin = () => {
     setIsLogin(!isLogin);
   };
-
+  const handleLogin = (bool) => {
+    setIsLogin(bool);
+  };
   const [userInfo, setUserInfo] = useState({
     username: "",
     email: "",
@@ -41,7 +43,7 @@ const App = () => {
 
   return (
     <backGroundDiv className="App">
-      <Menu isLogin={isLogin} handleIsLogin={handleIsLogin} />
+      <Menu isLogin={isLogin} handleLogin={handleLogin} />
       <Route exact path="/" render={() => <Home />} />
       <Route exact path="/introduce" render={() => <Introduce />} />
       <Route exact path="/building" render={() => <Building />} />
@@ -58,7 +60,11 @@ const App = () => {
           />
         )}
       />
-      <Route exact path="/Bdetail/:id" render={(props) => <Bdetail {...props}/>} />
+      <Route
+        exact
+        path="/Bdetail/:id"
+        render={(props) => <Bdetail {...props} />}
+      />
       <Route exact path="/B02" render={() => <B02 />} />
       <Route exact path="/B03" render={() => <B03 />} />
       <Route exact path="/B04" render={() => <B04 />} />
