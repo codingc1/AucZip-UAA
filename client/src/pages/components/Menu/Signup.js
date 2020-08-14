@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
 import TextField from "@material-ui/core/TextField";
 import { Checkbox } from "@material-ui/core";
-import Snackbar from "@material-ui/core/Snackbar";
+// import Snackbar from "@material-ui/core/Snackbar";
 import GoogleSignup from "./googleSignup.js";
 import Slide from "@material-ui/core/Slide";
 import { fetchSignUp } from "../../../api/fetchApi";
