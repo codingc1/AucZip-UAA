@@ -1,8 +1,8 @@
 import axios from "axios";
 // const aa ="http://ec2-54-180-105-165.ap-northeast-2.compute.amazonaws.com:3040";
 // axios.defaults.withCredentials = true
-// const baseUrl = 'http://localhost:3040';
-const baseUrl = "http://54.180.105.165:3040";
+const baseUrl = "http://localhost:3040";
+// const baseUrl = "http://54.180.105.165:3040";
 const instance = axios.create({
   timeout: 1000,
 });

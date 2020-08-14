@@ -1,24 +1,24 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-
-const { userController } = require('../controller');
+const { userController } = require("../controller");
+import verifyToken from "./middleware/veifyToken";
 
 // * POST /user/signin
-router.post('/signin', userController.signin.post);
+router.post("/signin", userController.signin.post);
 
 // * POST /user/signout
-router.get('/signout', userController.signout.get);
+router.get("/signout", userController.signout.get);
 
 // * POST /user/signup
-router.post('/signup', userController.signup.post);
+router.post("/signup", userController.signup.post);
 
 // * GET /user/info
-router.get('/info', userController.info.get);
+router.get("/info", userController.info.get);
 
-router.post('/info', userController.info.post);
+router.post("/info", userController.info.post);
 
-router.post('/pwd', userController.pwd.post);
+router.post("/pwd", userController.pwd.post);
 
-router.post('/googleSignin', userController.googleSignin.post);
+router.post("/googleSignin", userController.googleSignin.post);
 
 module.exports = router;

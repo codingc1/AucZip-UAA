@@ -7,7 +7,7 @@
     "te": "jest __test__/server.test.js",
     "test": "NODE_ENV=test jest --silent",
     "server-start": "nodemon server/app.js",
-    "start": "nodemon app.js"
+    "start": "nodemon --exec babel-node app.js"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +28,7 @@
     "style-loader": "^1.1.2"
   },
   "dependencies": {
+    "@babel/node": "^7.10.5",
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
     "colors": "^1.4.0",
