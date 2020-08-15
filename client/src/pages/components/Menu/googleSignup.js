@@ -34,7 +34,7 @@ function Admin(props) {
       buttonText="google SignUp"
       onSuccess={(result) => responseGoogle(result, props)}
       onFailure={responseGoogle}
-      cookiePolicy={"single_host_origin"}
+      // cookiePolicy={"single_host_origin"}
     />
   );
 }

@@ -4,7 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
 import TextField from "@material-ui/core/TextField";
-import GoogleSignin from "./googleSignin.js";
+import GoogleSignin from "./GoogleSignin.js";
+import GoogleSignOut from "./GoogleSignOut.js";
 import { fetchSignIn } from "../../../api/fetchApi";
 
 function rand() {
@@ -220,6 +221,7 @@ function Signin(props) {
               </div>
               <div class="modal-footer">
                 <GoogleSignin handleClose={handleClose.bind(this)} />
+                <GoogleSignOut handleClose={handleClose.bind(this)} />
                 {/* <div>sign in Google</div> */}
                 <button
                   type="button"

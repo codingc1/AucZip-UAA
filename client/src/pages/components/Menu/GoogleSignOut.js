@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import GoogleLogin from "react-google-login";
+import { GoogleLogout } from "react-google-login";
 import { googleSignin } from "../../../api/fetchApi";
 
 const responseGoogle = (googleUser, props) => {
@@ -24,14 +24,13 @@ const responseGoogle = (googleUser, props) => {
   });
 };
 
-function GoogleSignin(props) {
+function GoogleSignOut(props) {
   return (
-    <GoogleLogin
+    <GoogleLogout
       clientId="51190329735-2kb96bt3o726mj1r2ffnv5tnfhle5l8u.apps.googleusercontent.com"
-      // clientId="cho-first.s3-website.ap-northeast-2.amazonaws.com"
-      buttonText="google Login"
+      buttonText="google Logout"
       // onSuccess={(result) => responseGoogle(result, props)}
-      onSuccess={(result) => console.log(result, "resulte")}
+      onLogoutSuccess={(result) => console.log(result, "out")}
       // isSignedIn={true}
       // onFailure={responseGoogle}
       onFailure={(result) => console.log(result, "err")}
@@ -40,4 +39,4 @@ function GoogleSignin(props) {
   );
 }
 
-export default withRouter(GoogleSignin);
+export default withRouter(GoogleSignOut);

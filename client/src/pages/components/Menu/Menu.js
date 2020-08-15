@@ -11,6 +11,7 @@ import IconButton from "@material-ui/core/IconButton";
 import titleImage from "./AupZip_title_107x41.png";
 import Signin from "./Signin";
 import Signup from "./Signup";
+import GoogleSignin from "./GoogleSignin";
 
 const useStyles = makeStyles((theme) => ({
   root: {
