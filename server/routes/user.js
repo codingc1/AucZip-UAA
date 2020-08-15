@@ -13,7 +13,7 @@ router.get("/signout", userController.signout.get);
 router.post("/signup", userController.signup.post);
 
 // * GET /user/info
-router.get("/info", userController.info.get);
+router.get("/info", verifyToken, userController.info.get);
 
 router.post("/info", userController.info.post);
 

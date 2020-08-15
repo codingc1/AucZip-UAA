@@ -28,6 +28,17 @@ export function googleSignin(userInfo) {
 export function googleSignup(userInfo) {
   return axios.post(baseUrl + "/user/googleSignin", userInfo);
 }
+//USER INFO
+export function fetchUserInfo(token) {
+  // const userInfo = {
+  //   email,
+  //   password,
+  // };
+
+  return axios.get(baseUrl + "/user/info", {
+    headers: { Authorization: "Bearer " + token },
+  });
+}
 
 //4weeks
 export function fetchUserInfoGet() {

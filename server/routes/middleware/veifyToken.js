@@ -15,7 +15,8 @@ function verifyToken(req, res, next) {
     next();
   } else {
     //Forbidden
-    res.sendStatus(403);
+    res.status(403).send("need user session");
+    // res.sendStatus(403);
   }
 }
 export default verifyToken;

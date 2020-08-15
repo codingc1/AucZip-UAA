@@ -7,7 +7,8 @@ import TextField from "@material-ui/core/TextField";
 import GoogleSignin from "./GoogleSignin.js";
 import GoogleSignOut from "./GoogleSignOut.js";
 import { fetchSignIn } from "../../../api/fetchApi";
-
+//tmp
+import { fetchUserInfo } from "../../../api/fetchApi";
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -89,12 +90,30 @@ function Signin(props) {
     setOpen(false);
   };
 
+  //로그인하기
   const handleSubmit = ({ handleLogin }) => {
     fetchSignIn(userInfo).then((data) => {
       // axios.post(apiUrl + "/user/signin", userInfo).then((data) => {
       console.log(data, "data");
       if (data.status === 200) {
         alert("로그인에 성공하셨습니다");
+        localStorage.setItem(
+          "userInfo",
+          JSON.stringify({
+            // id: this.props.userInfo.id,
+            // username: this.props.userInfo.username,
+            token: data.data.token,
+          })
+        );
+        // localStorage의 userInfo를 JSON.parse를 통해 string을 JSON화 시킨후 token값만 가져옵니다.
+        const token = localStorage.getItem("userInfo")
+          ? JSON.parse(localStorage.getItem("userInfo")).token
+          : null;
+        console.log(token, "token get!!");
+        fetchUserInfo(token)
+          .then((result) => console.log(result, "res~"))
+          .catch((e) => console.log(e, "err"));
+
         handleLogin(true);
 
         if (data.data.memberId === "admin") {
