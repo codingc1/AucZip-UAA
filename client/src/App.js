@@ -16,7 +16,7 @@ import B05 from "./pages/components/Buliding/B05";
 
 import Signup from "./pages/components/Menu/Signup";
 
-const backGroundDiv = styled.div`
+const BackGroundDiv = styled.div`
   position: fixed;
   top: 0px;
   left: 0px;
@@ -42,7 +42,8 @@ const App = () => {
   });
 
   return (
-    <backGroundDiv className="App">
+    // <BackGroundDiv className="App">
+    <>
       <Menu isLogin={isLogin} handleLogin={handleLogin} />
       <Route exact path="/" render={() => <Home />} />
       <Route exact path="/introduce" render={() => <Introduce />} />
@@ -69,7 +70,8 @@ const App = () => {
       <Route exact path="/B03" render={() => <B03 />} />
       <Route exact path="/B04" render={() => <B04 />} />
       <Route exact path="/B05" render={() => <B05 />} />
-    </backGroundDiv>
+      {/* </BackGroundDiv> */}
+    </>
   );
 };
 
