@@ -15,9 +15,9 @@ router.post("/signup", userController.signup.post);
 // * GET /user/info
 router.get("/info", verifyToken, userController.info.get);
 
-router.post("/info", userController.info.post);
+router.post("/info", verifyToken, userController.info.post);
 
-router.post("/pwd", userController.pwd.post);
+router.post("/pwd", verifyToken, userController.pwd.post);
 
 router.post("/googleSignin", userController.googleSignin.post);
 

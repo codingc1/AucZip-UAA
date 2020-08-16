@@ -6,7 +6,6 @@ import Modal from "@material-ui/core/Modal";
 import TextField from "@material-ui/core/TextField";
 import Slide from "@material-ui/core/Slide";
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -111,7 +110,7 @@ const ChangePW = (props) => {
           <div
             class="modal fade"
             id="signup"
-            tabindex="-1"
+            tabIndex="-1"
             role="dialog"
             aria-labelledby="myModalLabel"
           >
@@ -131,8 +130,6 @@ const ChangePW = (props) => {
                   </h4>
                 </div>
                 <div class="modal-body">
-                  
-                
                   {/* Password */}
                   <TextField
                     InputProps={{
@@ -171,8 +168,8 @@ const ChangePW = (props) => {
                     onChange={handleInputValue("rePassword")}
                   />
                   <br />
-                  
-                    {/* newPassword */}
+
+                  {/* newPassword */}
                   <TextField
                     InputProps={{
                       classes: {
@@ -190,7 +187,6 @@ const ChangePW = (props) => {
                     name="new password"
                     onChange={handleInputValue("password")}
                   />
-    
                 </div>
                 <div class="modal-footer">
                   <button

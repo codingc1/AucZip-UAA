@@ -1,14 +1,15 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const { adminController } = require('../controller');
+const { adminController } = require("../controller");
+import verifyToken from "./middleware/veifyToken";
 
 // * GET /board
 // router.get('/', adminController.get);
 // // * POST /board
 // router.post('/', adminController.post);
-router.get('/userList', adminController.userList.get);
+router.get("/userList", verifyToken, adminController.userList.get);
 
-router.post('/delUser', adminController.delUser.post);
+router.post("/delUser", verifyToken, adminController.delUser.post);
 
 module.exports = router;

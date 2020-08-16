@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   },
   tableHeader: {
     fontSize: "2rem",
-    textAlign: "center",
+    textAlign: "left",
   },
 });
 
@@ -19,41 +19,42 @@ const BuildingInfo = (props) => {
 
   return (
     <div className={classes.root}>
-      <table>
-        <th className={classes.tableHeader}>
+      <div className={classes.tableHeader}>주목할 투자 상품</div>
+      <div>
+        {/* <th className={classes.tableHeader}>
           <td>주목할 투자 상품</td>
-        </th>
-        <tr>
-          <td>
+        </th> */}
+        <div>
+          <div>
             <BuildingItem
               building={props.buildings[4]}
               key={props.buildings[4].id}
               handleBuildingTitleClick={props.handleBuildingTitleClick}
             />
-          </td>
-          <td>
+          </div>
+          <div>
             <BuildingItem
               building={props.buildings[3]}
               key={props.buildings[3].id}
               handleBuildingTitleClick={props.handleBuildingTitleClick}
             />
-          </td>
-          <td>
+          </div>
+          <div>
             <BuildingItem
               building={props.buildings[2]}
               key={props.buildings[2].id}
               handleBuildingTitleClick={props.handleBuildingTitleClick}
             />
-          </td>
-          <td>
+          </div>
+          <div>
             <BuildingItem
               building={props.buildings[1]}
               key={props.buildings[1].id}
               handleBuildingTitleClick={props.handleBuildingTitleClick}
             />
-          </td>
-        </tr>
-      </table>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

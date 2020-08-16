@@ -21,8 +21,8 @@ const useStyles = makeStyles({
 const BuildingItem = (props) => {
   const classes = useStyles();
   return (
-    <Link to={"/Bdetail/"+props.building.id}>
-    {/* // {"/" + props.building.URL}> */}
+    <Link to={"/Bdetail/" + props.building.id}>
+      {/* // {"/" + props.building.URL}> */}
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia
@@ -36,20 +36,21 @@ const BuildingItem = (props) => {
             <Typography gutterBottom variant="h4" component="h2">
               {props.building.b_location}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              <div>{props.building.id}</div>
-              <div>{props.building.b_use}</div>
-              <div
-                // onClick={() => { 
-                //   props.handleBuildingTitleClick(props.building)
-                //   console.log(props, 'porps is')
-                //   props.history.push("/Bdetail");
-                // }}
+            {/* <Typography variant="body2" color="textSecondary" component="p"> */}
+            <div variant="body2" color="textSecondary">
+              {/* <div>{props.building?.id ? props.building.id : ""}</div> */}
+              <Typography>{props.building.b_use}</Typography>
+              <Typography
+              // onClick={() => {
+              //   props.handleBuildingTitleClick(props.building)
+              //   console.log(props, 'porps is')
+              //   props.history.push("/Bdetail");
+              // }}
               >
                 {props.building.b_evaluation}
-              </div>
-              <div>{props.building.b_location}</div>
-            </Typography>
+              </Typography>
+              <Typography>{props.building.b_location}</Typography>
+            </div>
           </CardContent>
         </CardActionArea>
         <CardActions></CardActions>
