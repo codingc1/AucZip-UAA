@@ -12,16 +12,17 @@ const useStyles = makeStyles({
     maxWidth: "100%",
   },
   tableHeader: {
+    width: "100%",
     fontSize: "2rem",
-    textAlign: "center",
+    textAlign: "left",
   },
   cardBox: {
     width: "100%",
     display: "flex",
     flexWrap: "wrap",
+    justifyContent: "center",
   },
 });
-
 const News = () => {
   const classes = useStyles();
 
@@ -40,7 +41,8 @@ const News = () => {
     <div className={classes.root}>
       <div>
         <div className={classes.tableHeader}>
-          <div colSpan="4">최신 부동산 뉴스</div>
+          {/* <div colSpan="4">최신 부동산 뉴스</div> */}
+          <div>최신 부동산 뉴스</div>
         </div>
         <div className={classes.cardBox}>
           <div>

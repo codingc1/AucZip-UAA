@@ -12,7 +12,8 @@ import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    // maxWidth: 345,
+    maxWidth: 300,
   },
 });
 
