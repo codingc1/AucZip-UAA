@@ -27,10 +27,10 @@ const BuildingInfo = (props) => {
   // const classes = useStyles();
 
   return (
-    <div className="root">
-      <div className="tableHeader">주목할 투자 상품</div>
-      <div className="building__box">
-        {/* <th className={tableHeader}>
+    <div className={classes.root}>
+      <div className={classes.tableHeader}>주목할 투자 상품</div>
+      <div className={classes.building__box}>
+        {/* <th className={classes.tableHeader}>
           <td>주목할 투자 상품</td>
         </th> */}
         <div>

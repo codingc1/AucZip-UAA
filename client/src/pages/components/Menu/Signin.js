@@ -91,8 +91,9 @@ function Signin(props) {
   };
 
   //로그인하기
-  const handleSubmit = ({ handleLogin }) => {
-    fetchSignIn(userInfo).then((data) => {
+  function handleSubmit() {
+    console.log(props, "props~~~");
+    fetchSignIn(userInfo).then(function (data) {
       // axios.post(apiUrl + "/user/signin", userInfo).then((data) => {
       console.log(data, "data");
       if (data.status === 200) {
@@ -106,21 +107,23 @@ function Signin(props) {
           })
         );
         // localStorage의 userInfo를 JSON.parse를 통해 string을 JSON화 시킨후 token값만 가져옵니다.
-        const token = localStorage.getItem("userInfo")
-          ? JSON.parse(localStorage.getItem("userInfo")).token
-          : null;
-        console.log(token, "token get!!");
-        fetchUserInfo(token)
-          .then((result) => console.log(result, "res~"))
-          .catch((e) => console.log(e, "err"));
-
-        handleLogin(true);
+        // const token = localStorage.getItem("userInfo")
+        //   ? JSON.parse(localStorage.getItem("userInfo")).token
+        //   : null;
+        // console.log(token, "token get!!");
+        // fetchUserInfo(token)
+        //   .then(function (result) {
+        //     console.log(result, "sign in res~");
+        //     props.handleLogin(true);
+        //   })
+        //   .catch((e) => console.log(e, "err"));
 
         if (data.data.memberId === "admin") {
           handleClose();
           props.history.push("/admin");
         } else {
           handleClose();
+          console.log(props.match, "in prios???");
           props.history.push("/");
         }
 
@@ -157,7 +160,7 @@ function Signin(props) {
     //     // props.history.push('/');
     //   }
     // });
-  };
+  }
   // const body = (
   //   // <div style={modalStyle} className={classes.paper}>
   //   //   <h2 id="simple-modal-title">Text in a modal</h2>
@@ -189,7 +192,7 @@ function Signin(props) {
           e.preventDefault();
           {/* <div class="modal-dialog" style={{width:"400px"}} > */}
           <div
-            class="modal-dialog"
+            className="modal-dialog"
             style={{
               width: "500px",
               height: "250px",
@@ -197,8 +200,8 @@ function Signin(props) {
               justifyContent: "center",
             }}
           >
-            <div class="modal-content" style={{ width: "400px" }}>
-              <div class="modal-body">
+            <div className="modal-content" style={{ width: "400px" }}>
+              <div className="modal-body">
                 <TextField
                   InputProps={{
                     classes: {
@@ -238,13 +241,13 @@ function Signin(props) {
                 <br />
                 {/* <GoogleSignin /> */}
               </div>
-              <div class="modal-footer">
+              <div className="modal-footer">
                 <GoogleSignin handleClose={handleClose.bind(this)} />
                 <GoogleSignOut handleClose={handleClose.bind(this)} />
                 {/* <div>sign in Google</div> */}
                 <button
                   type="button"
-                  class="btn btn-default"
+                  className="btn btn-default"
                   data-dismiss="modal"
                   onClick={handleClose}
                 >
@@ -252,8 +255,8 @@ function Signin(props) {
                 </button>
                 {/* <button type="submit" class="btn btn-primary" type="submit"> */}
                 <button
-                  class="btn btn-primary"
-                  onClick={() => handleSubmit(props)}
+                  className="btn btn-primary"
+                  onClick={() => handleSubmit()}
                 >
                   로그인
                 </button>

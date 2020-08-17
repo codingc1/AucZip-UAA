@@ -2,28 +2,29 @@ import React, { Component } from "react";
 import { fakedata } from "./fakedata";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import { withRouter } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+import "./buildingItem.css";
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 450,
-    minWidth: 300,
-    maxHeight: "100%",
-  },
-});
+// const useStyles = makeStyles({
+//   root: {
+//     maxWidth: 450,
+//     minWidth: 300,
+//     maxHeight: "100%",
+//   },
+// });
 
 const BuildingItem = (props) => {
-  const classes = useStyles();
+  // const classes = useStyles();
   return (
     <Link to={"/Bdetail/" + props.building.id}>
       {/* // {"/" + props.building.URL}> */}
-      <Card className={classes.root}>
+      <Card className="item__root">
         <CardActionArea>
           <CardMedia
             component="img"
