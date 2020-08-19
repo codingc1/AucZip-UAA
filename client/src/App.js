@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
+import { createStore } from "redux";
+import rootReducer from "./store";
+import { Provider } from "react-redux";
+
 import styled from "styled-components";
 
 import Home from "./pages/Home";
@@ -41,9 +45,11 @@ const App = () => {
     mobile: "",
   });
 
+  // 스토어 만들기
+  const store = createStore(rootReducer);
   return (
     // <BackGroundDiv className="App">
-    <>
+    <Provider store={store}>
       <Menu isLogin={isLogin} handleLogin={handleLogin} />
       <Route exact path="/" render={() => <Home />} />
       <Route exact path="/introduce" render={() => <Introduce />} />
@@ -71,7 +77,7 @@ const App = () => {
       <Route exact path="/B04" render={() => <B04 />} />
       <Route exact path="/B05" render={() => <B05 />} />
       {/* </BackGroundDiv> */}
-    </>
+    </Provider>
   );
 };
 

@@ -40,12 +40,14 @@ class Home extends Component {
   componentDidMount() {
     // axios.defaults.withCredentials = true;
     // axios.get("http://54.180.105.165:3040/building/info")
-    fetchBuildingInfo().then((result) => {
-      this.setState({
-        buildings: result.data,
-        currentBuilding: result.data[0],
-      });
-    });
+    fetchBuildingInfo()
+      .then((result) => {
+        this.setState({
+          buildings: result.data,
+          currentBuilding: result.data[0],
+        });
+      })
+      .catch((e) => console.log(e, "building info failed"));
   }
   handleBuildingTitleClick(building) {
     this.setState({

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -7,6 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import GoogleSignin from "./GoogleSignin.js";
 import GoogleSignOut from "./GoogleSignOut.js";
 import { fetchSignIn } from "../../../api/fetchApi";
+import { isLoggedin } from "../../../store/isLoggedIn";
 //tmp
 import { fetchUserInfo } from "../../../api/fetchApi";
 function rand() {
@@ -69,6 +71,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Signin(props) {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState({
     email: "",
@@ -93,50 +96,57 @@ function Signin(props) {
   //로그인하기
   function handleSubmit() {
     console.log(props, "props~~~");
-    fetchSignIn(userInfo).then(function (data) {
-      // axios.post(apiUrl + "/user/signin", userInfo).then((data) => {
-      console.log(data, "data");
-      if (data.status === 200) {
-        alert("로그인에 성공하셨습니다");
-        localStorage.setItem(
-          "userInfo",
-          JSON.stringify({
-            // id: this.props.userInfo.id,
-            // username: this.props.userInfo.username,
-            token: data.data.token,
-          })
-        );
-        // localStorage의 userInfo를 JSON.parse를 통해 string을 JSON화 시킨후 token값만 가져옵니다.
-        // const token = localStorage.getItem("userInfo")
-        //   ? JSON.parse(localStorage.getItem("userInfo")).token
-        //   : null;
-        // console.log(token, "token get!!");
-        // fetchUserInfo(token)
-        //   .then(function (result) {
-        //     console.log(result, "sign in res~");
-        //     props.handleLogin(true);
-        //   })
-        //   .catch((e) => console.log(e, "err"));
+    fetchSignIn(userInfo)
+      .then(function (data) {
+        // axios.post(apiUrl + "/user/signin", userInfo).then((data) => {
+        console.log(data, "data");
+        if (data.status === 200) {
+          //로그인 상태로 리덕스 변경
 
-        if (data.data.memberId === "admin") {
-          handleClose();
-          props.history.push("/admin");
+          alert("로그인에 성공하셨습니다");
+          localStorage.setItem(
+            "userInfo",
+            JSON.stringify({
+              // id: this.props.userInfo.id,
+              // username: this.props.userInfo.username,
+              token: data.data.token,
+            })
+          );
+          // localStorage의 userInfo를 JSON.parse를 통해 string을 JSON화 시킨후 token값만 가져옵니다.
+          // const token = localStorage.getItem("userInfo")
+          //   ? JSON.parse(localStorage.getItem("userInfo")).token
+          //   : null;
+          // console.log(token, "token get!!");
+          // fetchUserInfo(token)
+          //   .then(function (result) {
+          //     console.log(result, "sign in res~");
+          //     props.handleLogin(true);
+          //   })
+          //   .catch((e) => console.log(e, "err"));
+
+          if (data.data.memberId === "admin") {
+            handleClose();
+            props.history.push("/admin");
+            dispatch(isLoggedin(true));
+          } else {
+            handleClose();
+            console.log(props.match, "in prios???");
+            props.history.push("/");
+            dispatch(isLoggedin(true));
+          }
+
+          // console.log(props, 'porps')
+          // this.props.isLogin = true;
+          // this.props.handleLogin(props.isLogin);
+          // this.props.handleUserinfo(data);
         } else {
           handleClose();
-          console.log(props.match, "in prios???");
-          props.history.push("/");
+          alert("로그인 실패하였습니다");
+
+          // props.history.push('/');
         }
-
-        // console.log(props, 'porps')
-        // this.props.isLogin = true;
-        // this.props.handleLogin(props.isLogin);
-        // this.props.handleUserinfo(data);
-      } else {
-        alert("로그인 실패하였습니다");
-
-        // props.history.push('/');
-      }
-    });
+      })
+      .catch((e) => console.log(e, "signin error"));
 
     // e.preventDefault();
     // fetch("http://localhost:3040/user/signin", {

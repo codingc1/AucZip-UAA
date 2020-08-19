@@ -30,6 +30,14 @@ export function googleSignin(userInfo) {
 export function googleSignup(userInfo) {
   return axios.post(baseUrl + "/user/googleSignin", userInfo);
 }
+export function fetchSignOut() {
+  // const userInfo = {
+  //   email,
+  //   password,
+  // };
+  console.log(baseUrl, "baseUrl signout");
+  return axios.get(baseUrl + "/user/signout");
+}
 //USER INFO
 export function fetchUserInfo(token) {
   // const userInfo = {

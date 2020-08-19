@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -11,6 +12,7 @@ import IconButton from "@material-ui/core/IconButton";
 import titleImage from "./AupZip_title_107x41.png";
 import Signin from "./Signin";
 import Signup from "./Signup";
+import SignOut from "./Signout";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Menu = ({ isLogin, handleLogin }) => {
+  let isLodingRedux = useSelector((state) => state.isLoggedin.isLoggedin);
   const classes = useStyles();
 
   return (
@@ -79,15 +82,16 @@ const Menu = ({ isLogin, handleLogin }) => {
           ) : (
             <Signup handleLogin={handleLogin} />
           )}
-          {isLogin ? (
-            <Button
-              className={classes.button}
-              color="inherit"
-              onClick={() => handleLogin(false)}
-            >
-              로그아웃
-            </Button>
+          {isLodingRedux ? (
+            <SignOut />
           ) : (
+            // <Button
+            //   className={classes.button}
+            //   color="inherit"
+            //   onClick={() => handleLogin(false)}
+            // >
+            //   로그아웃
+            // </Button>
             <Signin handleLogin={handleLogin} />
           )}
 
