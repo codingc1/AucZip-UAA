@@ -73,9 +73,13 @@ const Menu = ({ isLogin, handleLogin }) => {
               투자 상품
             </Link>
           </Button>
-          {isLogin ? (
+          {isLodingRedux ? (
             <Button className={classes.button} color="inherit">
-              <Link className={classes.link} to="mypage" isLogin={isLogin}>
+              <Link
+                className={classes.link}
+                to="mypage"
+                // isLogin={isLodingRedux}
+              >
                 마이페이지
               </Link>
             </Button>
