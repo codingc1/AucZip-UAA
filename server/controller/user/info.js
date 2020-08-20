@@ -8,7 +8,7 @@ module.exports = {
     // let token = cookie.parse(req.headers.cookie).token
     let token = req.token;
     // console.log(token);
-    console.log(token);
+    console.log(token, "user info");
     if (token) {
       //권한이 있는 경우
 
